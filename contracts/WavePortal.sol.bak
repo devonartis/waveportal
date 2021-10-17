@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 import "hardhat/console.sol";
 
@@ -12,7 +12,8 @@ contract WavePortal {
      */
     event NewWave(address indexed from, uint256 timestamp, string message);
 
-    /*
+
+     /*
      * I created a struct here named Wave.
      * A struct is basically a custom datatype where we can customize what we want to hold inside it.
      */
@@ -27,19 +28,13 @@ contract WavePortal {
      * This is what lets me hold all the waves anyone ever sends to me!
      */
     Wave[] waves;
-
     constructor() {
-        console.log("I AM SMART CONTRACT. POG.");
+        console.log("Yes !!!, I am a contract and I am very smart");
     }
-
-    /*
-     * You'll notice I changed the wave function a little here as well and
-     * now it requires a string called _message. This is the message our user
-     * sends us from the frontend!
-     */
-    function wave(string memory _message) public {
+    
+    function wave() public {
         totalWaves += 1;
-        console.log("%s has waved!", msg.sender);
+        console.log("%s has waved %d times", msg.sender, totalWaves);
 
         /*
          * This is where I actually store the wave data in the array.
@@ -62,9 +57,8 @@ contract WavePortal {
     }
 
     function getTotalWaves() public view returns (uint256) {
-        // Optional: Add this line if you want to see the contract print the value!
-        // We'll also print it over in run.js as well.
-        console.log("We have %d total waves!", totalWaves);
+        //console.log("%s has waved %d times", msg.sender, totalWaves);
+        console.log("we have waved %d times", totalWaves);
         return totalWaves;
     }
 }
